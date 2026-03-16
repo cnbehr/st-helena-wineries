@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St. Helena Wineries — Friday Mar 20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --text-faint: #999;
+  --accent: #6b4c3b;
+  --accent-light: #f3ede8;
+  --border: #e8e4df;
+  --green: #2d7a3a;
+  --green-bg: #e8f5e9;
+  --amber: #b8860b;
+  --amber-bg: #fff8e1;
+  --red: #c0392b;
+  --red-bg: #fdecea;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100dvh;
+  padding-bottom: 3rem;
+}
+
+.header {
+  padding: 2rem 1.25rem 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+}
+.header .subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+.header .pill-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.cards {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.card-top {
+  padding: 1rem 1rem 0.75rem;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.card-setting {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.card-distance {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+.card-distance svg {
+  width: 12px; height: 12px; flex-shrink: 0;
+}
+
+.card-experience {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.price-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+.avail-badge.yes { background: var(--green-bg); color: var(--green); }
+.avail-badge.close { background: var(--amber-bg); color: var(--amber); }
+.avail-badge.no { background: var(--red-bg); color: var(--red); }
+
+.avail-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.avail-badge.yes .dot { background: var(--green); }
+.avail-badge.close .dot { background: var(--amber); }
+.avail-badge.no .dot { background: var(--red); }
+
+.card-actions {
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+.card-actions a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent);
+  transition: background 0.15s;
+}
+.card-actions a:hover { background: var(--accent-light); }
+.card-actions a + a { border-left: 1px solid var(--border); }
+
+.card-actions svg {
+  width: 14px; height: 14px; flex-shrink: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+}
+footer a { color: var(--text-faint); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>St. Helena Wineries</h1>
+  <div class="subtitle">Friday, March 20, 2026 &middot; 4 guests &middot; Outdoor seating</div>
+  <div class="pill-row">
+    <span class="pill">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      10:30 – 11 AM
+    </span>
+    <span class="pill">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="5"/></svg>
+      Outdoor only
+    </span>
+  </div>
+</div>
+
+<div class="cards">
+
+  <!-- 1. HALL Wines -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">HALL Wines</div>
+      <div class="card-setting">Sculpture garden, Great Lawn, vineyard views</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 1.2 mi from St. Helena</div>
+      <div class="card-experience">Signature Tour &middot; Cabernet Collector &middot; Platinum</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$60 – $200/pp</span>
+      <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=401+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.hallwines.com/hall-st-helena-experiences" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Beringer -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">Beringer Vineyards</div>
+      <div class="card-setting">Rhine House veranda, towering redwoods, estate gardens</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 1.1 mi from St. Helena</div>
+      <div class="card-experience">Midweek Escape &middot; Rhine House Veranda</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$45/pp</span>
+      <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=2000+Main+St+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.exploretock.com/beringervineyards" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. Fantesca -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">Fantesca Estate</div>
+      <div class="card-setting">Spring Mountain cave, sweeping garden views, private estate</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 4 mi from St. Helena (mountain road)</div>
+      <div class="card-experience">Private Tour & Tasting</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$200/pp</span>
+      <span class="avail-badge yes"><span class="dot"></span>10:30 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=2920+Spring+Mountain+Rd+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.exploretock.com/fantesca/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 4. Duckhorn -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">Duckhorn Vineyards</div>
+      <div class="card-setting">Estate gardens, flower beds, shaded grounds</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 1.2 mi from St. Helena</div>
+      <div class="card-experience">Portfolio Tasting (indoor/outdoor)</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$65/pp</span>
+      <span class="avail-badge yes"><span class="dot"></span>10:30 AM</span>
+      <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=1000+Lodi+Ln+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.exploretock.com/duckhorn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 5. Brasswood -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">Brasswood Cellars</div>
+      <div class="card-setting">Mountain-view patio, farm vibes, lawn games</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 2.4 mi from St. Helena</div>
+      <div class="card-experience">Signature Tasting (outdoor patio)</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$65/pp</span>
+      <span class="avail-badge yes"><span class="dot"></span>10:30 AM</span>
+      <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=3111+St+Helena+Hwy+N+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://resy.com/cities/napa-ca/venues/brasswood-cellars" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 6. Louis M. Martini -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">Louis M. Martini</div>
+      <div class="card-setting">Martini Park lawn, al fresco service, lawn games</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 0.8 mi from St. Helena</div>
+      <div class="card-experience">Taste of Martini Flight</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$55/pp</span>
+      <span class="avail-badge close"><span class="dot"></span>11:15 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=254+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.exploretock.com/louismartini" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+  <!-- 7. V. Sattui -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-name">V. Sattui</div>
+      <div class="card-setting">The Grove under oaks, vineyard panoramas, picnic lawns</div>
+      <div class="card-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg> 2 mi from St. Helena</div>
+      <div class="card-experience">Premier Outdoor Tasting</div>
+    </div>
+    <div class="card-meta">
+      <span class="price-tag">$55/pp</span>
+      <span class="avail-badge close"><span class="dot"></span>10:30 AM</span>
+    </div>
+    <div class="card-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=1111+White+Ln+St+Helena+CA+94574" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Map
+      </a>
+      <a href="https://www.vsattui.com/visit/reservations/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Availability checked March 16, 2026 &middot; Confirm before booking<br>
+  <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+</footer>
+
+</body>
+</html>
