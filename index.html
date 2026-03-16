@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<!--
-   ______                            __
-  / ____/___  ____ ___  ____  __  __/ /____  _____
- / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                    /_/
-        Created with Perplexity Computer
-        https://www.perplexity.ai/computer
--->
-<meta name="generator" content="Perplexity Computer">
-<meta name="author" content="Perplexity Computer">
-<meta property="og:see_also" content="https://www.perplexity.ai/computer">
-<link rel="author" href="https://www.perplexity.ai/computer">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>St. Helena Wineries — Friday Mar 20</title>
@@ -37,10 +23,8 @@
   --green-bg: #e8f5e9;
   --amber: #b8860b;
   --amber-bg: #fff8e1;
-  --red: #c0392b;
-  --red-bg: #fdecea;
   --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-  --radius: 12px;
+  --radius: 14px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -96,7 +80,7 @@ body {
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .card {
@@ -105,24 +89,93 @@ body {
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: box-shadow 0.2s ease;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #f0eeea;
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.carousel:hover .carousel-btn,
+.carousel:focus-within .carousel-btn { opacity: 1; }
+/* Always show on touch devices */
+@media (hover: none) { .carousel-btn { opacity: 1; } }
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
+.carousel-btn svg { width: 16px; height: 16px; stroke: #333; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+.carousel-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transition: background 0.2s;
+}
+.carousel-dots span.active {
+  background: rgba(255,255,255,0.95);
 }
 
 .card-top {
-  padding: 1rem 1rem 0.75rem;
+  padding: 0.85rem 1rem 0.65rem;
 }
 
 .card-name {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 400;
   line-height: 1.25;
 }
 
 .card-setting {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
   line-height: 1.4;
 }
 
@@ -133,24 +186,22 @@ body {
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-muted);
-  margin-top: 0.35rem;
+  margin-top: 0.3rem;
 }
-.card-distance svg {
-  width: 12px; height: 12px; flex-shrink: 0;
-}
+.card-distance svg { width: 12px; height: 12px; flex-shrink: 0; }
 
 .card-experience {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--accent);
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 .card-meta {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -171,14 +222,12 @@ body {
 }
 .avail-badge.yes { background: var(--green-bg); color: var(--green); }
 .avail-badge.close { background: var(--amber-bg); color: var(--amber); }
-.avail-badge.no { background: var(--red-bg); color: var(--red); }
 
 .avail-badge .dot {
   width: 6px; height: 6px; border-radius: 50%;
 }
 .avail-badge.yes .dot { background: var(--green); }
 .avail-badge.close .dot { background: var(--amber); }
-.avail-badge.no .dot { background: var(--red); }
 
 .card-actions {
   display: flex;
@@ -190,19 +239,17 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  padding: 0.7rem 0.5rem;
+  padding: 0.65rem 0.5rem;
   font-size: 0.78rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--accent);
   transition: background 0.15s;
 }
-.card-actions a:hover { background: var(--accent-light); }
+.card-actions a:active { background: var(--accent-light); }
+@media (hover: hover) { .card-actions a:hover { background: var(--accent-light); } }
 .card-actions a + a { border-left: 1px solid var(--border); }
-
-.card-actions svg {
-  width: 14px; height: 14px; flex-shrink: 0;
-}
+.card-actions svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 footer {
   text-align: center;
@@ -234,6 +281,21 @@ footer a { color: var(--text-faint); text-decoration: underline; }
 
   <!-- 1. HALL Wines -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/hall-st-helena-listing-2.jpg" alt="HALL Wines aerial view" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.hallwines.com/media/wysiwyg/hall/art/plensa_630.jpg" alt="HALL Wines Jaume Plensa sculpture" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://i0.wp.com/dannymangin.com/wp-content/uploads/2020/06/Hall-St.-Helena.jpeg?resize=1024%2C614&ssl=1" alt="HALL St Helena exterior" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.hallwines.com/media/wysiwyg/hall/art/baldesarri_768.jpg" alt="HALL Wines art installation" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.hallwines.com/media/wysiwyg/hall/art/argent_768.jpg" alt="HALL Wines grounds" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://files.elfsightcdn.com/91525cd8-bd5f-42b8-b562-7806c910e59a/1eb3397b-36a8-4f8a-a7d6-1e8400fc14de/bff_768x631-min.jpg" alt="HALL Wines tasting experience" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.hallwines.com/media/wysiwyg/imresizer-1712236994537_1_.jpg" alt="HALL Wines visit" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.hallwines.com/media/wysiwyg/We_Care/MJN_9610_Sanna_768px.jpg" alt="HALL Wines sculpture Sanna" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">HALL Wines</div>
       <div class="card-setting">Sculpture garden, Great Lawn, vineyard views</div>
@@ -245,19 +307,27 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=401+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.hallwines.com/hall-st-helena-experiences" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=401+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.hallwines.com/hall-st-helena-experiences" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 2. Beringer -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/crm/napavalley/0_BER_RhineHouse_076A4959_Murad-1-_DC724997-F567-4CE8-BDFE1259F626D57E_f7ee429c-b5b1-4ecd-9a5a156e0c41e536.jpg" alt="Beringer Rhine House" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://bestwineries.com/wp-content/uploads/2024/02/Beringer-vineyards-Rhine-House-Porch-1024x630.jpg" alt="Beringer Rhine House porch" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.argcreate.com/wp-content/uploads/Beringer-Vineyards-Rhine-House-FT-WS.jpg" alt="Beringer Rhine House architecture" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/15363-media-beringer-2.jpg" alt="Beringer Vineyards estate" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.beringer.com/cdn/shop/files/BER_RhineHouse_Exterior_0295-34.jpg?v=1741299773&width=320" alt="Beringer exterior" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://cdn0.weddingwire.com/vendor/959626/3_2/960/jpg/1522103615-48dbbc10faf11887-1522103614-3fa0928b9b31cf7a-1522103610041-3-12523758_164491010.jpeg" alt="Beringer grounds" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.beringer.com/cdn/shop/files/3000x2000_Rhine_House_New.jpg?v=1756170625&width=320" alt="Beringer Rhine House new" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">Beringer Vineyards</div>
       <div class="card-setting">Rhine House veranda, towering redwoods, estate gardens</div>
@@ -269,19 +339,27 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=2000+Main+St+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.exploretock.com/beringervineyards" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=2000+Main+St+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.exploretock.com/beringervineyards" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 3. Fantesca -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://cdn.prod.website-files.com/6451b384588f2815ea7ae825/64f7ab33378f20f4785842dd_Fantesca-Gate-Entrance-Drone.webp" alt="Fantesca Estate entrance aerial" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/fantesca-estate-winery-listing-feature-sthelena.jpg" alt="Fantesca Estate" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Fantesca_Estate_%26_Winery.jpg" alt="Fantesca Estate & Winery" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2015/10/05112501/Fantesca-Estate_Brandon-Tavelli-PHotographer-1320x880-1.jpg" alt="Fantesca grounds" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://cdn.prod.website-files.com/6451b384588f2815ea7ae825/64dbef427eda85d527418655_Fantesca-Cave-Wide.webp" alt="Fantesca wine cave" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.napawineproject.com/wp-blog/wp-content/uploads/2013/10/Fantesca-Winery-5.jpg" alt="Fantesca Winery" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/napavalley/11063737_10153827159862166_5152857435796488183_n0-ef9466315056a36_ef959363-5056-a36a-089be69bc6ee4ea0.jpg" alt="Fantesca vineyards" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">Fantesca Estate</div>
       <div class="card-setting">Spring Mountain cave, sweeping garden views, private estate</div>
@@ -293,19 +371,28 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge yes"><span class="dot"></span>10:30 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=2920+Spring+Mountain+Rd+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.exploretock.com/fantesca/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=2920+Spring+Mountain+Rd+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.exploretock.com/fantesca/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 4. Duckhorn -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://bestwineries.com/wp-content/uploads/2023/04/Duckhorn-Vineyards-Estate-House-photo-credit-Wildly-Simple-Productions.jpg" alt="Duckhorn Estate House" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/napavalley/duckhorn0085__4x60-3d1c84385056a36_3d1c855c-5056-a36a-08050d1f9f0d7ec7.jpg" alt="Duckhorn Vineyards" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://bestwineries.com/wp-content/uploads/2023/04/Duckhorn-Vineyards-exterior-aerial-1024x630.jpg" alt="Duckhorn aerial view" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.duckhorn.com/assets/client/Image/Duckhorn-Courtyard.jpg" alt="Duckhorn Courtyard" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.duckhorn.com/assets/images/contentblock/photos/ge-tasting-cross.jpg" alt="Duckhorn tasting" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.duckhorn.com/assets/images/contentblock/photos/dv-group-taste.jpg" alt="Duckhorn group tasting" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://californiawinetours.com/wp-content/uploads/2025/06/duckhorn.jpg" alt="Duckhorn exterior" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/duckhorn-vineyards-listing-feature-sthelena-640x360.jpg" alt="Duckhorn estate" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">Duckhorn Vineyards</div>
       <div class="card-setting">Estate gardens, flower beds, shaded grounds</div>
@@ -318,19 +405,27 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=1000+Lodi+Ln+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.exploretock.com/duckhorn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=1000+Lodi+Ln+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.exploretock.com/duckhorn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 5. Brasswood -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/brasswood-cellars-listing-feature-sthelena.jpg" alt="Brasswood Cellars" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/brasswood-cellars-listing-4.jpg" alt="Brasswood interior" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/brasswood-cellars-listing-2.jpg" alt="Brasswood wine" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://brasswood.com/wp-content/uploads/2021/11/AboutPage_Header-1920px.jpg" alt="Brasswood estate" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://candlelightinn.com/wp-content/uploads/2020/09/hdr_patio_people.jpg" alt="Brasswood patio dining" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/15/ab/e8/outside-covered-patio.jpg?w=1200&h=1200&s=1" alt="Brasswood outdoor patio" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.sthelena.com/wp-content/uploads/brasswood-estate-winery-1281x1920.jpg" alt="Brasswood winery" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">Brasswood Cellars</div>
       <div class="card-setting">Mountain-view patio, farm vibes, lawn games</div>
@@ -343,19 +438,27 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge yes"><span class="dot"></span>11:00 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=3111+St+Helena+Hwy+N+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://resy.com/cities/napa-ca/venues/brasswood-cellars" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=3111+St+Helena+Hwy+N+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://resy.com/cities/napa-ca/venues/brasswood-cellars" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 6. Louis M. Martini -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2020/06/24141509/blog-062620-outdoor-bnr.jpg" alt="Louis M. Martini outdoor" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2020/06/24140929/blog-062620-outdoor-pic3.jpg" alt="Martini Park outdoor tasting" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2020/06/24140922/blog-062620-outdoor-pic4.jpg" alt="Martini outdoor experience" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2020/06/24140924/blog-062620-outdoor-pic1.jpg" alt="Martini Park" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://cdn.justluxe.com/articles/galleries/106841.jpg" alt="Louis M. Martini renovation" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://winecountry-media.s3.amazonaws.com/wp-content/uploads/sites/4/2019/06/12090750/blog-062519-lmm-bnr.jpg" alt="Louis M. Martini winery" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://bestwineries.com/wp-content/uploads/2022/07/louis-martini-5-e1678395577856.jpg" alt="Louis M. Martini exterior" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">Louis M. Martini</div>
       <div class="card-setting">Martini Park lawn, al fresco service, lawn games</div>
@@ -367,19 +470,26 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge close"><span class="dot"></span>11:15 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=254+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.exploretock.com/louismartini" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=254+St+Helena+Hwy+S+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.exploretock.com/louismartini" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
   <!-- 7. V. Sattui -->
   <div class="card">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide"><img src="https://www.vsattui.com/wp-content/uploads/2024/03/Drone-shot-Rich-Yarr-Photography-cropped.png" alt="V. Sattui aerial" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.vsattui.com/wp-content/uploads/2022/09/Food-Truck-header-cropped-scaled.webp" alt="V. Sattui picnic grounds" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/napavalley/VSattui_Aerial_50th_61085FC9-477B-4D8C-B0BCE25EF5FB80C4_e3de9772-5d6b-4ae3-a63323dd75d624b0.png" alt="V. Sattui 50th anniversary aerial" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.vsattui.com/wp-content/uploads/2022/07/terracetastingblog-1024x602.jpg" alt="V. Sattui terrace tasting" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://www.napavalleyjourneys.com/images/vsattui-garden-reception.jpg" alt="V. Sattui garden" loading="lazy"></div>
+        <div class="carousel-slide"><img src="https://c8.alamy.com/comp/KW4W7J/customers-dine-in-an-outdoor-picnic-area-at-v-sattui-winery-in-napa-KW4W7J.jpg" alt="V. Sattui outdoor picnic" loading="lazy"></div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="carousel-btn next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="carousel-dots"></div>
+    </div>
     <div class="card-top">
       <div class="card-name">V. Sattui</div>
       <div class="card-setting">The Grove under oaks, vineyard panoramas, picnic lawns</div>
@@ -391,23 +501,57 @@ footer a { color: var(--text-faint); text-decoration: underline; }
       <span class="avail-badge close"><span class="dot"></span>10:30 AM</span>
     </div>
     <div class="card-actions">
-      <a href="https://www.google.com/maps/search/?api=1&query=1111+White+Ln+St+Helena+CA+94574" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Map
-      </a>
-      <a href="https://www.vsattui.com/visit/reservations/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book
-      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=1111+White+Ln+St+Helena+CA+94574" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Map</a>
+      <a href="https://www.vsattui.com/visit/reservations/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book</a>
     </div>
   </div>
 
 </div>
 
 <footer>
-  Availability checked March 16, 2026 &middot; Confirm before booking<br>
-  <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+  Availability checked March 16, 2026 &middot; Confirm before booking
 </footer>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const track = carousel.querySelector('.carousel-track');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const dotsContainer = carousel.querySelector('.carousel-dots');
+  const prevBtn = carousel.querySelector('.prev');
+  const nextBtn = carousel.querySelector('.next');
+  let current = 0;
+  const total = slides.length;
+
+  // Create dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('active');
+    dotsContainer.appendChild(dot);
+  }
+  const dots = dotsContainer.querySelectorAll('span');
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Touch/swipe support
+  let startX = 0;
+  let diff = 0;
+  carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchmove', e => { diff = e.touches[0].clientX - startX; }, { passive: true });
+  carousel.addEventListener('touchend', () => {
+    if (Math.abs(diff) > 40) {
+      goTo(diff > 0 ? current - 1 : current + 1);
+    }
+    diff = 0;
+  });
+});
+</script>
 
 </body>
 </html>
